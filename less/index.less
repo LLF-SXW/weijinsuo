@@ -1,0 +1,268 @@
+//引入文件
+@import 'variables.less';
+@import 'maxin.less';
+
+// body{
+//     background-color: yellowgreen;
+//     font-size: 50px;
+// }
+// // 定义变量
+// @width:100px;
+// @height:@width*2;
+// //使用变量
+// #header{
+//     width: @width;
+//     height: @height;
+//     border: 1px solid black;
+//     .bordertb();//调用函数
+// }
+// //混入Maxin  css里的自定义函数(把需要重复使用的代码封装到一个函数里)
+// //函数名{} 函数名里也可以加-
+// .bordertb(@size:1px,@b:red){//后面1px red是默认值 前面@开头的是参数
+//     border-top: @size solid @b;
+//     border-bottom: @size solid @b;
+// }
+// .box{
+
+//     height: 100px;
+//     .bordertb(5px, skyblue)//调用函数
+// }
+
+// #header{
+//     .container{
+//         .row{
+                // >div{}  //表示子代div
+//             .col{
+//                 a{
+                    
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+#header{
+    border-bottom: 1px solid @border-color;
+    .row{
+        >div{//表示子代所有的选择器
+            border-right: 1px solid #ccc;
+            height: 40px;
+            line-height: 40px;
+            font-size: 12px;
+            &:last-child{
+             border-right: none;
+            }
+            a{
+                color: @a-color;
+                }
+            .btn-sm{
+                 color: white;
+             }   
+               
+             }
+        }
+    }
+
+ #nav{
+   
+     margin-bottom: 0px;
+    background-color: white;
+     height: 82px;
+     
+     .navbar-header{
+        a{  
+            display: block;
+            height: 80px;
+            line-height: 50px;
+                     
+     .icon-icon{
+           color: #e92322;
+           font-size: 30px;
+}    .icon-logo{
+           color: black;
+           font-size: 30px;
+}
+        }
+         
+     }
+     .navbar-nav{
+    
+         a{
+             display: block;
+             box-sizing: border-box;
+             height: 80px;
+             line-height: 50px;
+             &.active{
+              
+                border-bottom: 2px solid red;
+                background-color: white;
+             }
+             &:hover{
+                border-bottom: 10px solid red;
+             }
+
+         }
+     }
+ }
+
+ #slide{
+     .carousel-inner{
+         .large-image{
+             background-position: center center;
+             height: 410px;
+            display: block;
+         }
+         .small-image{
+             display: block;
+             img{
+                 width: 100%;
+             }
+         }
+     }
+ }
+
+ #featrue{
+     color: #666;
+    //  margin-top:40px;
+    //  padding-bottom: 20px;
+    padding:40px 0;//这句目的是给这个盒子增加内边距,撑开与上下盒子的距离
+     border-bottom: 1px solid #ccc;
+     .media{
+           >a{
+               color: #666;
+               text-decoration: none;
+               &:hover{
+                   color: red;
+               }
+           }
+        // 下面代码意思是当窗口达到最小时,让每列居中;
+           @media(max-width:768px) {
+               >a{
+                   width: 200px;
+                   display: block;
+                   margin: 0 auto;
+               }
+           }
+     }
+     
+     }
+     #booking{
+         border-bottom: 1px solid @border-color;
+         padding: 20px 0;
+     }
+
+     #products{
+         background-color: #f0f0f0;
+         .nav-tabs{
+             >li{
+                 &.active{
+                     a{
+                         background-color: transparent;
+                         border-color: transparent;
+                         border-bottom: 3px solid @main-color;
+                     }
+                 }
+                 >a{
+                     color: @a-color;
+                     font-size: 16px;
+                     &:hover{
+                         border-color: transparent;
+                     }
+                 }
+             }
+         }
+         .tab-content{
+             .row{
+               
+                 margin-top: 20px;
+               
+                .product{
+                    // padding: 40px 0;
+                    margin-bottom: 20px;
+                    background-color: #fff;
+                    display: flex;
+                    &.red{
+                        background-color: @main-color;
+                        color: white;
+                    }
+                    .product-left{
+                     flex: 1;
+                     height: 160px;
+
+                     >h4{
+                         text-align: center;
+                         line-height: 30px;
+                        //  用line-height:30px将p标签宽度增大
+                     }
+                    > .row{
+                        margin: 0;
+                        >div{
+                            >p{
+                                margin-bottom: 0;
+                            }
+                            &:nth-child(2n){
+                                text-align: right;
+                            }
+                        }
+                       
+                       
+                     }
+                    }
+                   .product-right{
+                    width: 120px;
+                    height: 160px;
+                    border-left: 1px dashed @border-color;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                   > p{
+                    >strong{
+                        font-size: 30px;
+                    }
+                    }
+                    .tooltips{
+                      .tip-red{
+                          color:red;
+                          text-decoration: none;
+                          border: 1px solid red;
+                          padding: 2px;
+                      }
+                      .tip-green{
+                          color: #0f0;
+                          text-decoration: none;
+                          border: 1px solid #0f0;
+                          padding: 2px;
+                      }
+                    }
+                    &::before,&::after{
+                        content: '';
+                        width: 16px;
+                        height: 16px;
+                        border-radius: 50%;
+                        background-color: #eee;
+                        position: absolute;
+                        left: -8px;
+                    }
+                    &::before{
+                        top: -8px;
+                    }
+                    &::after{
+                        bottom: -8px;
+                    }
+        }
+
+                }
+             }
+         }
+     }
+ 
+
+
+
+     footer{
+         height: 500px;
+     }
+
